@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { BiCoffee } from 'react-icons/bi';
-import { Button, ThemeToggle } from '../';
+import { MenuButton, ThemeToggle } from '../';
 import useDarkSide from './hooks/useDarkSide';
 
 function App() {
@@ -13,8 +12,10 @@ function App() {
     setDarkSide(newDarkMode);
   };
 
-  const handleButtonClick = () => {
-    console.log('Button with icon clicked');
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -38,12 +39,6 @@ function App() {
                   size={42}
                   className="text-indigo-600 dark:text-gray-200 mx-6"
                 />
-                <Button
-                  className="bg-indigo-600 text-gray-50 dark:bg-slate-200 dark:text-slate-800 font-bold"
-                  text="Coffee"
-                  icon={<BiCoffee size={27} />}
-                  onClick={handleButtonClick}
-                />
               </div>
               <div className="font-sans  italic mx-auto max-w-[700px] text-slate-500 dark:text-slate-400">
                 Toggle the theme and experience the magic!
@@ -57,9 +52,9 @@ function App() {
         <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-100">
           Component Preview
         </h2>
-        <div className="max-w-4xl mx-auto mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="max-w-6xl mx-auto mt-8 grid gap-8 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2">
           <div
-            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            className="rounded-lg border bg-card text-card-foreground shadow-sm border-indigo-400 dark:border-indigo-300"
             data-v0-t="card"
           >
             <div className="flex flex-col space-y-1.5 p-6">
@@ -79,21 +74,46 @@ function App() {
           </div>
 
           <div
-            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            className="rounded-lg border bg-card text-card-foreground shadow-sm border-indigo-400 dark:border-indigo-300"
             data-v0-t="card"
           >
             <div className="flex flex-col space-y-1.5 p-6">
               <h3 className="text-slate-700 dark:text-slate-300 text-2xl font-semibold leading-none tracking-tight">
-                Button with icon
+                Menu Button
               </h3>
             </div>
             <div className="p-6">
-              <Button
-                className="bg-indigo-600 text-gray-50 dark:bg-slate-200 dark:text-slate-800 font-bold"
-                text="Coffee"
-                icon={<BiCoffee size={27} />}
-                onClick={handleButtonClick}
-              />
+              <div className="container mx-auto flex items-center justify-between">
+                {!isMenuOpen && (
+                  <h1 className="text-indigo-600 dark:text-gray-200 text-xl font-bold">My Site</h1>
+                )}
+                <div className="md:flex space-x-4">
+                  {isMenuOpen && (
+                    <>
+                      <a
+                        href="#"
+                        className="text-slate-700 dark:text-slate-300 text-xl font-medium"
+                      >
+                        Home
+                      </a>
+                      <a
+                        href="#"
+                        className="text-slate-700 dark:text-slate-300 text-xl font-medium"
+                      >
+                        About
+                      </a>
+                    </>
+                  )}
+                </div>
+                <div className="">
+                  <MenuButton
+                    onClick={handleMenuClick}
+                    isOpen={isMenuOpen}
+                    size={42}
+                    className="text-indigo-600 dark:text-gray-200 mx-6"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
