@@ -2,7 +2,7 @@
   "name": "yombal-ui",
   "author": "Alpha DIOP",
   "private": false,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Yombal UI is a library that provides ready-to-use React components for faster development",
   "repository": {
     "type": "git",
