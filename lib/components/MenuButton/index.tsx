@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { BiMenu, BiX } from 'react-icons/bi';
 import '../ThemeToggle/styles.module.css';
+import MenuIcon from './MenuIcon';
+import XIcon from './XIcon';
 
 interface MenuButtonProps {
   onClick: () => void;
@@ -16,7 +17,7 @@ function MenuButton({ onClick, size, isOpen, className }: MenuButtonProps) {
       onClick={onClick}
       className={`focus:outline-none transition duration-300 ease-in-out ${className || ''}`}
     >
-      {isOpen ? <BiX size={size} /> : <BiMenu size={size} />}
+      {isOpen ? <XIcon size={size} /> : <MenuIcon size={size} />}
     </button>
   );
 }
