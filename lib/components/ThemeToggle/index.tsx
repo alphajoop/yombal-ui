@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { BiMoon, BiSun } from 'react-icons/bi';
+import MoonIcon from './MoonIcon';
+import SunIcon from './SunIcon';
 import './styles.module.css';
 
 interface ThemeToggleProps {
@@ -19,7 +20,7 @@ function ThemeToggle({ theme, onClick, size, shouldScaleOnHover, className }: Th
         shouldScaleOnHover ? 'transform hover:scale-110' : ''
       } ${className || ''}`}
     >
-      {theme ? <BiMoon size={size} /> : <BiSun size={size} />}
+      {theme ? <MoonIcon size={size} /> : <SunIcon size={size} />}
     </button>
   );
 }
